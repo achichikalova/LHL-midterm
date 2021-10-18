@@ -1,0 +1,42 @@
+/*****Colors*****/
+$primary-color:#272727;
+$accent-color: #e2a616;
+$body-color: #f7f7f7;
+$font-color: #d8d8d8;
+$grey-font-color:#a0a0a0;
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem auto;
+  font-size: 20px;
+  width: 70vw;
+  height: auto;
+  padding: 2em;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+
+    input {
+      margin-bottom: 1em;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+
+    button {
+      width: 250px;
+      color: $font-color;
+      background-color: $primary-color;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      padding: 5px 10px;
+    }
+  }
+}
