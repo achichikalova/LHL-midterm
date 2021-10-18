@@ -13,7 +13,6 @@ header {
   width: 100vw;
   height: 12.5rem;
   z-index: 2;
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -78,10 +77,11 @@ header {
     border-bottom: 1px solid #1d1d1d;
     border-top: 1px solid #1d1d1d;
 
-    .login a{
+    .login-btn a{
       color: $font-color;
       margin: 1rem;
     }
+
   }
 
   nav {
