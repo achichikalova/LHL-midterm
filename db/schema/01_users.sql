@@ -7,5 +7,6 @@ CREATE TABLE users (
   email VARCHAR (255) NOT NULL,
   phone INTEGER,
   city VARCHAR (255),
-  is_admin BOOLEAN DEFAULT FALSE
+  is_admin BOOLEAN DEFAULT FALSE,
+  password INTEGER(255)
 );
