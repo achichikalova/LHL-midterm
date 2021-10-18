@@ -1,0 +1,116 @@
+/*****Colors*****/
+$primary-color:#272727;
+$accent-color: #e2a616;
+$body-color: #f7f7f7;
+$font-color: #d8d8d8;
+$grey-font-color:#a0a0a0;
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 12.5rem;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $primary-color;
+  color: $font-color;
+
+  .main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+
+    padding: 40px 0 0 40px;
+
+    h1 {
+      text-transform: uppercase;
+      margin: 0;
+      font-size: 2.2rem;
+      filter: drop-shadow(0 0 2rem $body-color);
+    }
+
+    span {
+      color: $accent-color;
+    }
+
+    p {
+      text-transform: uppercase;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+  }
+
+  .contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 40px 0 0;
+
+    .phone {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+    .email {
+      font-size: 1.1rem;
+    }
+  }
+
+  .menu {
+    width: 100vw;
+    height: 5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    background: rgb(45,45,45);
+    background: linear-gradient(0deg, rgb(77, 77, 77) 0%, rgb(49, 49, 49) 100%);
+    border-bottom: 1px solid #1d1d1d;
+    border-top: 1px solid #1d1d1d;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+
+    .link {
+      color: #ffffff;
+      font-size: 20px;
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px;
+    }
+    .link:hover {
+      border-top: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      transition: .3s;
+    }
+  }
+
+
+  .icons {
+    padding: 1rem;
+
+    i {
+      margin-left: 1rem;
+      cursor: pointer;
+      transition: .3s;
+    }
+    i:hover {
+      color: #000;
+    }
+  }
+}
+
