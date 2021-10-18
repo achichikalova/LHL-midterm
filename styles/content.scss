@@ -9,7 +9,10 @@
 .featured {
 	text-transform:uppercase;
   margin-left:10px;
-  color: #e2a616;
+
+  span {
+    color: #e2a616;
+  }
 }
 
 
@@ -37,13 +40,8 @@
 }
 
 
-.listing-price{
 
-}
 
-house-size{
-
-}
 
 
 
