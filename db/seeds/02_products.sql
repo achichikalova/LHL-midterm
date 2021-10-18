@@ -5,7 +5,7 @@ VALUES
 
 (3, 2, 'Commercial', True, 'Best location, 1000 sq', '', 900, false),
 
-(2, 2, 'House', True, 'Model 5593', '4bed + 4bath', 800, false),
+(2, 2, 'House', True, '4bed + 4bath', '', 800, false),
 
 (1, 2, 'Cottage', True, '2 parkings, Lake view', '', 2800, true),
 
