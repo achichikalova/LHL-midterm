@@ -1,5 +1,5 @@
 INSERT INTO product_types (name) VALUES
 ('Condo'),
 ('House'),
-('Basement'),
+('Appartment'),
 ('Cottage');

@@ -56,6 +56,10 @@ app.get("/login", (req, res) => {
   res.render('login')
 })
 
+app.get("/add/properties", (req, res) => {
+  res.render('new');
+})
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

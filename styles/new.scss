@@ -1,0 +1,45 @@
+/*****Colors*****/
+$primary-color:#272727;
+$accent-color: #e2a616;
+$body-color: #f7f7f7;
+$font-color: #d8d8d8;
+$grey-font-color:#a0a0a0;
+
+.new-property {
+  margin: 2em auto;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+
+  form {
+    width: 100%;
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+
+  .btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2em;
+
+    button {
+      width: 250px;
+      margin-right: 2em;
+    }
+
+    a {
+      font-size: 1.8em;
+      color: red;
+    }
+
+  }
+}
