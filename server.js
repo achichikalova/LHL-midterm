@@ -8,6 +8,7 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const cookieSession = require('cookie-session');
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -19,6 +20,10 @@ db.connect();
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan("dev"));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['hello from the other side', 'cool thing we are doing']
+}));
 
 app.set("view engine", "ejs");
 // app.use(express.urlencoded({ extended: true }));
@@ -52,11 +57,15 @@ app.use("/add-property", dbRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const user_id = req.session.user_id;
+  const email = req.session.user_email;
+  const isAdmin = req.session.isAdmin;
+  const templateVars = { user_id, email, isAdmin };
+  res.render("index", templateVars);
 });
 
 app.get("/login", (req, res) => {
-  res.render('login');
+  res.render('login', { user_id: null, error_message: null, isAdmin: null });
 });
 
 app.post("/login", (req, res) => {
@@ -67,17 +76,26 @@ app.post("/login", (req, res) => {
     .query(sqlQuery, values)
     .then((data) => {
       const user = data.rows[0];
-      if (user) {
-        req.body.user_email = user.email;
-        req.body.user_id = user.id;
-        res.redirect("/");
-      } else {
-        res.send("Unauth access");
+      const templateVars = {};
+      if (!user) {
+        templateVars.error_message = 'User not found';
+        templateVars.user_id = null;
+        return res.render("login", templateVars);
       }
+        req.session['user_email'] = user.email;
+        req.session['user_id'] = user.id;
+        req.session['isAdmin'] = user.is_admin;
+        res.redirect("/");
     })
     .catch((err) => {
       res.status(500).json({ err: err.message });
     });
+});
+
+app.post('/logout', function(req, res) {
+  req.session = null;
+  // req.logout();
+  res.redirect('/');
 });
 
 app.listen(PORT, () => {
