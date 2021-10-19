@@ -7,6 +7,7 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const bodyParser = require("body-parser");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -20,8 +21,8 @@ db.connect();
 app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
-app.use(express.urlencoded({ extended: true }));
-
+// app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   "/styles",
   sassMiddleware({
@@ -56,6 +57,27 @@ app.get("/", (req, res) => {
 
 app.get("/login", (req, res) => {
   res.render('login');
+});
+
+app.post("/login", (req, res) => {
+  const email = req.body.email;
+  const values = [email];
+  const sqlQuery = `SELECT * FROM users WHERE email = $1`;
+  return db
+    .query(sqlQuery, values)
+    .then((data) => {
+      const user = data.rows[0];
+      if (user) {
+        req.body.user_email = user.email;
+        req.body.user_id = user.id;
+        res.redirect("/");
+      } else {
+        res.send("Unauth access");
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ err: err.message });
+    });
 });
 
 app.listen(PORT, () => {
