@@ -29,7 +29,7 @@
     <!-- Add new Ad section -->
     <main class="new-property">
       <h1 >Add new Property</h1>
-      <form action="/properties" method="POST" class="form">
+      <form action="/add-property" method="POST" class="form">
 
         <div class="form-wrapper">
           <label for="description">Description</label>
@@ -38,7 +38,7 @@
 
         <div class="form-wrapper">
           <label for="type">Type</label>
-          <select id="type" name="type" required>
+          <select id="type" name="name" required>
             <option value="house">House</option>
             <option value="apartment">Apartment</option>
             <option value="commercial">Commercial</option>
@@ -53,14 +53,14 @@
 
         <div class="featured-wrapper">
           <label for="price">Featured</label>
-          <input type="radio" name="featured" value="true">
+          <input type="radio" name="is_featured" value="true">
           <label for="featured">No</label>
-          <input type="radio" name="featured" value="false" checked>
+          <input type="radio" name="is_featured" value="false" checked>
         </div>
 
         <div class="form-wrapper">
           <label for="thumbnail">Thumbnail Image</label>
-          <input placeholder="Thumbnail Image" type="text" name="thumbnail_photo_url" id="thumbnail" required>
+          <input placeholder="Thumbnail Image" type="text" name="photo_1" id="thumbnail" required>
         </div>
 
         <div class="btn-wrapper">

@@ -5,8 +5,7 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
   email VARCHAR (255) NOT NULL,
-  phone INTEGER,
+  phone BIGINT,
   city VARCHAR (255),
-  is_admin BOOLEAN DEFAULT FALSE,
-  password INTEGER(255)
+  is_admin BOOLEAN DEFAULT FALSE
 );

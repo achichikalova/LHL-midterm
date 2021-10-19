@@ -2,26 +2,28 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/add-property", (req, res) => {
+  router.get("/", (req, res) => {
     res.render('new')
   });
 
-  router.post("/add-property", (req, res) => {
-    console.log(res)
-    let query = `SELECT * FROM products
+  router.post("/", (req, res) => {
+
+    console.log(req.body)
+    let query = `
       INSERT INTO products
       (description,
       name,
       price,
-      is_featured
-      photo_1)
-      VALUES ($1, $2, $3, $4, $5, true)
+      is_featured,
+      photo_1,
+      is_available)
+      VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING *;`;
-    // db.query(query, [products.description, products.name, products.price, products.photo_1, products.is_available, products.is_featured])
-    // .then(res => res.rows)
-    // .catch((err) => {
-    //   console.log(err.message);
-    // });
+    db.query(query, [req.body.description, req.body.name, req.body.price, req.body.is_featured, req.body.photo_1, true])
+    .then(res => res.rows)
+    .catch((err) => {
+      console.log(err.message);
+    });
   });
   return router;
 }
