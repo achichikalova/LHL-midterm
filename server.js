@@ -37,11 +37,13 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const dbRoutes = require("./routes/database");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+app.use("/add-property", dbRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -57,11 +59,7 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/add-property", (req, res) => {
-  res.render('new');
-});
-
-app.post("/add-property", (req, res) => {
-  req.body;
+  res.render('new')
 });
 
 app.listen(PORT, () => {
