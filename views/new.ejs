@@ -29,7 +29,7 @@
     <!-- Add new Ad section -->
     <main class="new-property">
       <h1 >Add new Property</h1>
-      <form action="/add-property/submit" method="POST" class="form">
+      <form action="/properties" method="POST" class="form">
 
         <div class="form-wrapper">
           <label for="description">Description</label>
@@ -51,12 +51,11 @@
           <input placeholder="Price" type="number" name="price" id="price" required>
         </div>
 
-        <div class="form-wrapper">
+        <div class="featured-wrapper">
           <label for="price">Featured</label>
-          <input type="checkbox" name="featured" value="false" checked>
-          <label for="featured">False</label>
-          <input type="checkbox" name="featured" value="true">
-          <label for="featured">True</label>
+          <input type="radio" name="featured" value="true">
+          <label for="featured">No</label>
+          <input type="radio" name="featured" value="false" checked>
         </div>
 
         <div class="form-wrapper">
