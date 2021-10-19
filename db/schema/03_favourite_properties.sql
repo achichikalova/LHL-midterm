@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS favorite_products CASCADE;
+DROP TABLE IF EXISTS favorite_properties CASCADE;
+CREATE TABLE favorite_properties (
+id SERIAL PRIMARY KEY NOT NULL,
+properties_id INTEGER REFERENCES properties(id) ON DELETE CASCADE,
+user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
