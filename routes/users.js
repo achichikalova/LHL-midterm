@@ -21,8 +21,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  router.post("/favorites/:product_id", (req, res) => {
-    const propertyId = req.params.product_id;
+  router.post("/favorites/:properties_id", (req, res) => {
+    const propertyId = req.params.properties_id;
     const userId = 1;
     const sqlQuery = `INSERT INTO favorite_properties (properties_id, user_id) VALUES ($1, $2)`;
     const values = [propertyId, userId];
