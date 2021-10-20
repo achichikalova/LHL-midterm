@@ -59,6 +59,7 @@ app.get("/", (req, res) => {
   const email = req.session.user_email;
   const isAdmin = req.session.isAdmin;
   const templateVars = { user_id, email, isAdmin };
+  console.log('get /')
   res.render("index", templateVars);
 });
 
@@ -92,6 +93,7 @@ app.post("/login", (req, res) => {
 
 app.post('/logout', function(req, res) {
   req.session = null;
+  console.log('post logout')
   res.redirect('/');
 });
 
