@@ -3,6 +3,6 @@ CREATE TABLE messages (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   content TEXT,
-  product_id INTEGER REFERENCES products(id) ON DELETE CASCADE,
+  properties_id INTEGER REFERENCES properties(id) ON DELETE CASCADE,
   is_for_admin BOOLEAN DEFAULT false
 );
