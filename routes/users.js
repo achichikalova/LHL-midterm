@@ -90,5 +90,67 @@ module.exports = (db) => {
         res.status(500).json({ err: err.message });
       });
   });
+    //Rendering thenew message page
+    router.get("/properties/:properties_id/message", (req, res) => {
+      const user_email = req.session.user_email;
+      const userId = req.session.user_id;
+      const propertiesId = req.params.properties_id;
+      const sqlQuery = `SELECT * FROM properties WHERE id = $1;`;
+      const values = [propertiesId];
+      db.query(sqlQuery, values)
+        .then((data) => {
+          const properties = data.rows[0];
+          const templateVars = { user_email, userId, properties };
+          res.render("new_message", templateVars);
+        })
+        .catch((err) => {
+          res.status(500).json({ err: err.message });
+        });
+    });
+
+  //creating a new message for the properties
+    router.post("/properties/:properties_id/message", (req, res) => {
+      const sqlQuery = `INSERT INTO messages (user_id, content, properties_id) VALUES ($1, $2, $3);`;
+      const userId = req.session.user_id;
+      const message = req.body.name;
+      const propertiesId = req.params.properties_id;
+      const values = [userId, message, propertiesId];
+      db.query(sqlQuery, values)
+        .then((data) => {
+          res.redirect("/");
+        })
+        .catch((err) => {
+          res.status(500).json({ err: err.message });
+        });
+    });
+
+  //Rendering the messages page
+    router.get("/messages", (req, res) => {
+      let values = [];
+      const userId = req.session.user_id;
+      let sqlQuery = ``;
+      if (userId == 1) {
+        sqlQuery = `SELECT * FROM messages WHERE is_for_admin = $1 ORDER BY messages.id DESC;`;
+        values = [true];
+      } else {
+        sqlQuery = `SELECT is_for_admin, content, properties.id AS properties_id, properties.seller_id, properties.title, properties.price AS price, user_id, users.name AS user_name
+        FROM messages
+        JOIN properties ON properties.id = messages.properties_id
+        JOIN users ON users.id = messages.user_id
+        WHERE user_id = $1 OR properties.seller_id = $2
+        ORDER BY messages.id DESC;`;
+        values = [userId, userId];
+      }
+      const user_email = req.session.user_email;
+      db.query(sqlQuery, values)
+        .then((data) => {
+          const messages = data.rows;
+          const templateVars = { user_email, userId, messages };
+          res.render("message", templateVars);
+        })
+        .catch((err) => {
+          res.status(500).json({ err: err.message });
+        });
+    });
   return router;
 };
