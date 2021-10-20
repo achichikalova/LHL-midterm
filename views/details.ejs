@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/login.css" type="text/css" />
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/content.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/details.css" type="text/css" />
+
 
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -26,18 +29,30 @@
   <body>
     <!-- Header section -->
     <%- include('partials/_header') %>
-    <!-- Login section -->
-    <main class="login">
-      <h1 >Login</h1>
-      <form class="login-form" action="/login" method="POST">
-        <div class="form-group">
-          <input class="form-control" type="email" name="email" placeholder="e-mail@mail.com">
-          <input class="form-control" type="password" name="password" placeholder="Password">
-          <button type="submit" value="Login" class="btn dark">Login</button>
+    <!-- display section -->
+
+    <div class="listings-container">
+      <h4 class="featured"><span>Listing</span> Details</h4>
+      <div class="listings">
+          <div class="listing">
+               <%= product.name%>
+            <img src='/images/image1.png' alt=“”>
+            <figcaption><strong>House Cost:&nbsp; $370000 </strong></figcaption>
+
+            <div>
+              <%= product.price%>
+              <%= product.description%>
+            </div>
+          </div>
         </div>
-      </form>
+      </div>
     </main>
-    <!-- Footer section -->
+ <!-- Footer section -->
+ <%- include('partials/_footer') %>
   </body>
-  <%- include('partials/_footer') %>
+
 </html>
+
+
+
+
