@@ -28,16 +28,19 @@
     <%- include('partials/_header') %>
     <!-- Favorite section -->
     <section class="favorites-container">
-      <%for (let favorite of favorites) {%>
-        <div class="property-card">
-          <img src="<%= favorite.photo_1 %>" alt="<%= favorite.title %>">
-          <div class="property-content">
-            <h2><%= favorite.title %></h1>
-            <div>Price: $<%= favorite.price %> </div>
-            <button type="button" class="btn btn-outline-dark">More info</button>
+      <h1><span>Your</span> Favorites</h1>
+      <div class="property-container">
+        <%for (let favorite of favorites) {%>
+          <div class="property-card">
+            <img src="<%= favorite.photo_1 %>" alt="<%= favorite.title %>">
+            <div class="property-content">
+              <h2><%= favorite.title %></h1>
+              <div>Price: $<%= favorite.price %> </div>
+              <button type="button" class="btn btn-outline-dark">More info</button>
+            </div>
           </div>
+          <% } %>
         </div>
-      <% } %>
     </section>
     <!-- Footer section -->
     <%- include('partials/_footer') %>
