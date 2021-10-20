@@ -29,15 +29,14 @@
     <!-- Favorite section -->
     <section class="favorites-container">
       <%for (let favorite of favorites) {%>
-      <div class="property-card">
+        <div class="property-card">
+          <img src="<%= favorite.photo_1 %>" alt="<%= favorite.title %>">
+          <div class="property-content">
+            <h1><%= favorite.title %></h1>
+            <div>Price: $<%= favorite.price %> </div>
+            <button type="button" class="btn btn-outline-dark">More info</button>
           </div>
-          <th>
-            <form method="GET" action="/favorites/<%=favorite.product_id %>" class="property-buttons">
-              <button type="submit">add</button>
-            </form>
-          </th>
-        </tr>
-      </div>
+        </div>
       <% } %>
     </section>
     <!-- Footer section -->

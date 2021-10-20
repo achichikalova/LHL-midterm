@@ -1,0 +1,51 @@
+/*****Colors*****/
+$primary-color:#272727;
+$accent-color: #e2a616;
+$body-color: #f7f7f7;
+$font-color: #d8d8d8;
+$grey-font-color:#a0a0a0;
+
+.favorites-container {
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+
+  .property-card {
+    height: 20em;
+    width: 20em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border: 2px solid $grey-font-color;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-left: 2em;
+
+      img {
+      height: 12em;
+      width: 14em;
+      padding: 1em 2em;
+      position: absolute;
+      top: 0px;
+      transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    &:hover {
+      box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    }
+  }
+  .property-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    padding: 1em;
+  }
+}

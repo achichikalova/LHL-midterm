@@ -45,7 +45,7 @@ const dbRoutes = require("./routes/database");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
+app.use("/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/add-property", dbRoutes(db));
 // Note: mount other resources here, using the same pattern above
@@ -80,10 +80,10 @@ app.post("/login", (req, res) => {
         templateVars.user_id = null;
         return res.render("login", templateVars);
       }
-        req.session['user_email'] = user.email;
-        req.session['user_id'] = user.id;
-        req.session['isAdmin'] = user.is_admin;
-        res.redirect("/");
+      req.session['user_email'] = user.email;
+      req.session['user_id'] = user.id;
+      req.session['isAdmin'] = user.is_admin;
+      res.redirect("/");
     })
     .catch((err) => {
       res.status(500).json({ err: err.message });
