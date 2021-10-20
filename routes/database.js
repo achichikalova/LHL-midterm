@@ -7,6 +7,9 @@ module.exports = (db) => {
     const email = req.session.user_email;
     const isAdmin = req.session.isAdmin;
     const templateVars = { user_id, email, isAdmin };
+    if (!isAdmin) {
+      res.redirect('/');
+    }
     res.render('new', templateVars);
   });
 
