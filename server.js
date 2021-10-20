@@ -9,7 +9,6 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieSession = require('cookie-session');
-
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -22,9 +21,8 @@ db.connect();
 app.use(morgan("dev"));
 app.use(cookieSession({
   name: 'session',
-  keys: ['hello from the other side', 'cool thing we are doing']
+  keys: ['key1', 'key2'],
 }));
-
 app.set("view engine", "ejs");
 // app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
