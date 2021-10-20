@@ -4,15 +4,18 @@
 <head>
   <title>RealEstate</title>
   <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
   <link rel="stylesheet" href="/styles/login.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
   <link rel="stylesheet" href="/styles/content.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/details.css" type="text/css" />
+
+
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -21,20 +24,35 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-
-  <!-- Add icon link -->
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
   <body>
     <!-- Header section -->
     <%- include('partials/_header') %>
+    <!-- display section -->
 
-    <!-- Content section -->
-    <%- include('partials/_content') %>
+    <div class="listings-container">
+      <h4 class="featured"><span>Listing</span> Details</h4>
+      <div class="listings">
+          <div class="listing">
+               <%= product.name %>
+            <img src='/images/image1.png' alt=“”>
+            <figcaption><strong>House Cost:&nbsp; $370000 </strong></figcaption>
 
-    <!-- Footer section -->
-    <%- include('partials/_footer') %>
+            <div>
+              <%= product.price %>
+              <%= product.description %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+ <!-- Footer section -->
+ <%- include('partials/_footer') %>
   </body>
 
 </html>
+
+
+
+

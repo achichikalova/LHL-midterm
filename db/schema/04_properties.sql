@@ -8,6 +8,6 @@ title VARCHAR (255) NOT NULL,
 is_available BOOLEAN DEFAULT TRUE,
 description VARCHAR(255),
 photo_1 TEXT,
-price INTEGER NOT NULL,
+price BIGINT NOT NULL,
 is_featured BOOLEAN DEFAULT TRUE
 );
