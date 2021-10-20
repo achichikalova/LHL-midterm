@@ -6,6 +6,7 @@ $font-color: #d8d8d8;
 $grey-font-color:#a0a0a0;
 
 header {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -66,7 +67,10 @@ header {
   }
 
   .menu {
+    position: absolute;
     width: 100vw;
+    left: 0;
+    bottom: 0;
     height: 5rem;
     display: flex;
     justify-content: space-around;
@@ -76,6 +80,7 @@ header {
     background: linear-gradient(0deg, rgb(77, 77, 77) 0%, rgb(49, 49, 49) 100%);
     border-bottom: 1px solid #1d1d1d;
     border-top: 1px solid #1d1d1d;
+    z-index: 3;
 
     .login-btn a{
       color: $font-color;
