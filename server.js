@@ -58,7 +58,7 @@ app.get("/login", (req, res) => {
 
 app.get("/views/details/:id", (req, res) => {
   console.log(req.params.id)
-  db.query("SELECT * FROM products WHERE id = $1",[req.params.id]) .then (result => {
+  db.query("SELECT * FROM properties WHERE id = $1",[req.params.id]) .then (result => {
     console.log(result.rows)
     res.render('details',{product:result.rows[0]})
   })
