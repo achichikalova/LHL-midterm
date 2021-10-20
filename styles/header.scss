@@ -104,17 +104,18 @@ header {
     }
   }
 
-
   .icons {
-    padding: 1rem;
+    display: flex;
+    flex-direction: row;
 
-    i {
-      margin-left: 1rem;
+    a {
       cursor: pointer;
       transition: .3s;
-    }
-    i:hover {
-      color: #000;
+      color: $font-color;
+
+      &:hover {
+        color: #000;
+      }
     }
   }
 }

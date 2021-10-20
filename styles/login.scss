@@ -16,6 +16,12 @@ $grey-font-color:#a0a0a0;
   height: auto;
   padding: 2em;
 
+  h1 {
+    span {
+      color: $accent-color;
+    }
+  }
+
   .form-group {
     display: flex;
     flex-direction: column;
