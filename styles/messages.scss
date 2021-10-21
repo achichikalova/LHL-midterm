@@ -44,6 +44,7 @@ $grey-font-color:#a0a0a0;
 
       .name {
         font-size: 1.2em;
+        font-weight: bold;
         color: $accent-color;
       }
 
@@ -58,6 +59,7 @@ $grey-font-color:#a0a0a0;
       float: right;
       text-align: center;
       color: $primary-color;
+      padding-right: 1em;
     }
 
   }
@@ -80,7 +82,7 @@ $grey-font-color:#a0a0a0;
 
       &:hover {
         background-color: $font-color;
-        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
         i {
           color: $accent-color;
