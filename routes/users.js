@@ -59,6 +59,18 @@ module.exports = (db) => {
       });
     });
 
+    //Removing favourite product from user
+    router.post("/favourite/:favorite_product_id/delete", (req, res) => {
+      const sqlQuery = `DELETE FROM favorite_products WHERE id = $1;`;
+      const values = [req.params.favorite_product_id];
+      db.query(sqlQuery, values)
+        .then((data) => {
+          res.redirect("/users/favourite/");
+        })
+        .catch((err) => {
+          res.status(500).json({ err: err.message });
+        });
+    });
   //Filtering properties by price
   router.post("/filter", (req, res) => {
     let sqlQuery = `SELECT properties.id, properties.title as properties_title, properties.price AS properties_price, properties.description as description, properties.photo_1 as properties_photo FROM properties_types JOIN properties ON properties.type_id = properties_types.id`;
