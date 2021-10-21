@@ -107,7 +107,8 @@ app.get("/views/details/:id", (req, res) => {
   db.query("SELECT * FROM properties WHERE id = $1",[req.params.id]) .then (result => {
     console.log(result.rows)
     res.render('details',{product:result.rows[0], user_id: null})
-  })
+  });
+});
 
 
 app.listen(PORT, () => {
