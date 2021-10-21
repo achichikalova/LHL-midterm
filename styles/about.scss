@@ -1,0 +1,68 @@
+/*****Colors*****/
+$primary-color:#272727;
+$accent-color: #e2a616;
+$body-color: #f7f7f7;
+$font-color: #d8d8d8;
+$grey-font-color:#a0a0a0;
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  margin: auto;
+  font-size: 20px;
+  padding: 3em;
+
+  h1 {
+    font-weight: bold;
+    color: $primary-color;
+    text-transform: uppercase;
+    font-size: 3em;
+
+    span {
+      color: $accent-color;
+    }
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 75vw;
+
+    .about-card {
+      width: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 2em 1em;
+      text-align: justify;
+
+      .info {
+        color: $accent-color;
+        font-size: 2em;
+        margin: .5em 1em;
+      }
+
+      .about-title {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-bottom: 1em;
+      }
+
+      .about-content {
+        text-align: justify;
+      }
+    }
+  }
+
+}
