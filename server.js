@@ -58,8 +58,31 @@ app.get("/", (req, res) => {
   const user_id = req.session.user_id;
   const email = req.session.user_email;
   const isAdmin = req.session.isAdmin;
-  const templateVars = { user_id, email, isAdmin };
-  res.render("index", templateVars);
+  let houses;
+  let query = `
+    SELECT
+    *
+    FROM properties;`;
+  db.query(query)
+    .then(result => {
+      houses = result.rows;
+      // console.log("log3", result.rows);
+      const templateVars = {
+        user_id,
+        email,
+        isAdmin,
+        houses
+      };
+      console.log(templateVars.houses);
+      res.render("index", templateVars);
+
+    })
+
+    .catch((err) => {
+      console.log(err.message);
+
+    });
+
 });
 
 app.get("/login", (req, res) => {
@@ -95,14 +118,19 @@ app.post('/logout', function(req, res) {
   res.redirect('/');
 });
 
-app.get("/views/details/:id", (req, res) => {
-  console.log(req.params.id)
-  db.query("SELECT * FROM properties WHERE id = $1",[req.params.id]) .then (result => {
-    console.log(result.rows)
-    res.render('details',{product:result.rows[0], user_id: null})
-  })
+// app.get("/views/details/:id", (req, res) => {
+//   console.log(req.params.id)
+//   db.query("SELECT * FROM properties WHERE id = $1",[req.params.id]) .then (result => {
+//     console.log(result.rows)
+//     res.render('details',{product:result.rows[0], user_id: null})
+//   })
 
-})
+// })
+// app.get("/", (req, res) => {
+//   console.log("log1",req.body);
+//   //let templateVars = {photo:req.body.photo_1};
+//   res.render('_content.ejs');
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

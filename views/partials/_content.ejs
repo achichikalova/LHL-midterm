@@ -1,19 +1,21 @@
+<section>
 <div class="listings-container">
   <h4 class="featured"><span>Featured</span> Listings</h4>
   <div class="listings">
+
+    <% for (let house in houses) {%>
       <div class="listing">
-        <a href="/views/details/2"><img src='images/image1.png' alt=“”></a>
+        <p> <%= houses[house].title %> </p>
+        <img src=<%= houses[house].photo_1 %> alt=“”>
         <figcaption><strong>House Cost:&nbsp; $370 000 </strong></figcaption>
       </div>
+
+     <%  } %>
       <div class="listing">
-        <img src='images/image2.png' alt=“”>
-        <figcaption><strong>House Cost:&nbsp; $370 000 </strong></figcaption>
+
       </div>
-      <div class="listing">
-        <img src='images/image3.png' alt=“”>
-        <figcaption><strong>House Cost:&nbsp; $370 000 </strong></figcaption>
-      </div>
-      <div class="listing">
+
+     <!-- <div class="listing">
         <img src='images/image4.png' alt=“”>
         <figcaption><strong>House Cost:&nbsp; $370 000 </strong></figcaption>
       </div>
@@ -30,13 +32,13 @@
         <figcaption><strong>House Cost:&nbsp; $370 000 </strong></figcaption>
       </div>
       <div class="listing">
-        <img src='images/image4.png' alt=“”>
+        <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png' alt=“”>
         <figcaption><strong>House Cost:&nbsp; $370 000 </strong></figcaption>
       </div>
       <div class="listing">
         <img src='images/image5.png' alt=“”>
         <figcaption><strong>House Cost:&nbsp; $370 000 </strong></figcaption>
-      </div>
+      </div> -->
   </div>
 </div>
 </section>
