@@ -137,7 +137,6 @@ module.exports = (db) => {
       });
   });
 
-
   //Rendering the messages page
     router.get("/messages", (req, res) => {
       let values = [];
