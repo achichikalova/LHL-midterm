@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   let query = `
     SELECT
     *
-    FROM properties;`
+    FROM properties;`;
   db.query(query)
     .then(res => {
       res.rows
