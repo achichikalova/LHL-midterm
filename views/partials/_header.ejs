@@ -29,12 +29,10 @@
     <% } else { %>
       <div class="icons">
         <a type="submit" class="nav-item nav-link" href="/"><i class="fas fa-envelope"></i></a>
-        <form class="form-inline" action="/users/favorites" method="GET">
         <% if (isAdmin) { %>
           <a type="submit" class="nav-item nav-link" href="/add-property"><i class="fas fa-plus-circle"></i></a>
         <% } else { %>
           <a type="submit" class="nav-item nav-link" href="/users/favorites"><i class="fas fa-heart"></i></a>
-        </form>
         <% } %>
       </div>
       <form class="form-inline" action="/logout" method="POST">
