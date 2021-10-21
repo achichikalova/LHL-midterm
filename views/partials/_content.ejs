@@ -5,8 +5,8 @@
 
     <% for (let house in houses) {%>
       <div class="listing">
-        <p> <%= houses[house].title %> </p>
-        <img src=<%= houses[house].photo_1 %> alt=“”>
+        <p> <%= house.title %> </p>
+        <img src='<%= house.photo_1 %>' alt=“”>
         <figcaption><strong>House Cost:&nbsp; $370 000 </strong></figcaption>
       </div>
 

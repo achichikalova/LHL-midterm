@@ -125,8 +125,8 @@ app.get("/views/details/:id", (req, res) => {
     console.log(result.rows)
     res.render('details',{product:result.rows[0], user_id: null})
   });
+})
 
-// })
 // app.get("/", (req, res) => {
 //   console.log("log1",req.body);
 //   let templateVars = {photo:req.body.photo_1};
