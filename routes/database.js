@@ -10,12 +10,10 @@ module.exports = (db) => {
     if (!isAdmin) {
       res.redirect('/');
     }
-    res.render('new', templateVars);
+    res.render('new_property', templateVars);
   });
 
   router.post("/", (req, res) => {
-
-    console.log(req.body)
     let query = `
       INSERT INTO products
       (title,
@@ -28,10 +26,10 @@ module.exports = (db) => {
       VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING *;`;
     db.query(query, [req.body.title, req.body.description, req.body.type, req.body.price, req.body.is_featured, req.body.photo_1, true])
-    .then(res => res.rows)
-    .catch((err) => {
-      console.log(err.message);
-    });
+      .then(res => res.rows)
+      .catch((err) => {
+        console.log(err.message);
+      });
   });
   return router;
 }
