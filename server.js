@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
@@ -42,6 +42,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const dbRoutes = require("./routes/database");
+const contentRoute = require("./routes/content");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -54,36 +55,10 @@ app.use("/add-property", dbRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/", (req, res) => {
-  const user_id = req.session.user_id;
-  const email = req.session.user_email;
-  const isAdmin = req.session.isAdmin;
-  let houses;
-  let query = `
-    SELECT
-    *
-    FROM properties;`;
-  db.query(query)
-    .then(result => {
-      houses = result.rows;
-      // console.log("log3", result.rows);
-      const templateVars = {
-        user_id,
-        email,
-        isAdmin,
-        houses
-      };
-      console.log(templateVars.houses);
-      res.render("index", templateVars);
+app.use("/",contentRoute(db));
 
-    })
 
-    .catch((err) => {
-      console.log(err.message);
 
-    });
-
-});
 
 app.get("/login", (req, res) => {
   res.render('login', { user_id: null, error_message: null, isAdmin: null });
