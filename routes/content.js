@@ -9,9 +9,9 @@ router.get("/", (req, res) => {
     *
     FROM properties;`;
   db.query(query)
-    .then(res => {
-      res.rows
-      console.log("log3", res.rows);
+    .then(result => {
+      result.rows
+      console.log("log3", result.rows);
     })
 
     .catch((err) => {
