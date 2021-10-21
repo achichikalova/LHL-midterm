@@ -9,11 +9,11 @@ module.exports = (db) => {
     let query = `
       SELECT
       *
-      FROM properties;`;
+      FROM properties WHERE is_featured = 'true';`;
     db.query(query)
       .then(result => {
         houses = result.rows;
-        // console.log("log3", result.rows);
+        console.log("log3", result.rows);
         const templateVars = {
           user_id,
           isAdmin,

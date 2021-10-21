@@ -3,11 +3,12 @@
   <h4 class="featured"><span>Featured</span> Listings</h4>
   <div class="listings">
 
-    <% for (let house in houses) {%>
+    <% for (let house of houses) {%>
       <div class="listing">
         <p> <%= house.title %> </p>
-        <img src='<%= house.photo_1 %>' alt=“”>
-        <figcaption><strong>House Cost:&nbsp; $370 000 </strong></figcaption>
+        <img src='<%= house.photo_1 %>'>
+        <p> <%= house.price %> </p>
+        <p> <%= house.description %> </p>
       </div>
 
      <%  } %>
