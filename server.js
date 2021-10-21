@@ -42,6 +42,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const dbRoutes = require("./routes/database");
+const contentRoute = require("./routes/content");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -54,13 +55,10 @@ app.use("/add-property", dbRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/", (req, res) => {
-  const user_id = req.session.user_id;
-  const email = req.session.user_email;
-  const isAdmin = req.session.isAdmin;
-  const templateVars = { user_id, email, isAdmin };
-  res.render("index", templateVars);
-});
+app.use("/",contentRoute(db));
+
+
+
 
 app.get("/login", (req, res) => {
   res.render('login', { user_id: null, error_message: null, isAdmin: null });
@@ -92,7 +90,7 @@ app.post("/login", (req, res) => {
 
 app.post('/logout', function(req, res) {
   req.session = null;
-  console.log('post logout')
+  console.log('post logout');
   res.redirect('/');
 });
 
@@ -111,7 +109,6 @@ app.get("/views/details/:id", (req, res) => {
     res.render('details',{product:result.rows[0], user_id: null})
   })
 
-})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
