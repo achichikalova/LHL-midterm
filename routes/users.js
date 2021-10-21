@@ -22,30 +22,12 @@ module.exports = (db) => {
       });
   });
 
-  //Inserting products into favorites list if user clicks on favorite this
-  router.post("/favorites/:properties_id", (req, res) => {
-    const propertyId = req.params.properties_id;
-    const userId = 1;
-    const sqlQuery = `INSERT INTO favorite_properties (properties_id, user_id) VALUES ($1, $2)`;
-    const values = [propertyId, userId];
-    db.query(sqlQuery, values)
-      .then((data) => {
-        console.log("data", data);
-        res.redirect("/");
-      })
-      .catch((err) => {
-        console.log("error", err);
-        res.status(500).json({ err: err.message });
-      });
-  });
-
   //Rendering the favorite page
   router.get("/favorites", (req, res) => {
     const sqlQuery = `SELECT favorite_properties.id AS favorite_id, properties.photo_1, properties.title, properties.price, properties.id AS properties_id, user_id FROM favorite_properties INNER JOIN properties ON properties.id = favorite_properties.properties_id
     WHERE favorite_properties.user_id = $1;`;
     let userId = req.session.user_id;
     const values = [userId];
-    console.log(values);
     db.query(sqlQuery, values)
       .then((data) => {
         const user_email = req.session.user_email;
@@ -57,20 +39,43 @@ module.exports = (db) => {
       .catch((err) => {
         res.status(500).json({ err: err.message });
       });
-    });
+  });
 
-    //Removing favourite product from user
-    router.post("/favourite/:favorite_product_id/delete", (req, res) => {
-      const sqlQuery = `DELETE FROM favorite_products WHERE id = $1;`;
-      const values = [req.params.favorite_product_id];
+  //Inserting products into favorites list if user clicks on favorite this
+  router.post("/favorites/:properties_id", (req, res) => {
+    const propertyId = req.params.properties_id;
+    const userId = req.session.user_id;
+    const sqlQuery = `INSERT INTO favorite_properties (properties_id, user_id) VALUES ($1, $2)`;
+    const values = [propertyId, userId];
+    console.log(values)
+    if (userId) {
       db.query(sqlQuery, values)
         .then((data) => {
-          res.redirect("/users/favourite/");
+          console.log("data", data);
+          res.redirect("/");
         })
         .catch((err) => {
+          console.log("error", err);
           res.status(500).json({ err: err.message });
         });
-    });
+    }
+  });
+
+  //Removing favorite product from user
+  router.post("/favorite/:favorite_properties_id/delete", (req, res) => {
+    const sqlQuery = `DELETE FROM favorite_properties WHERE id = $1;`;
+    const values = [req.params.favorite_properties.properties_id];
+    console.log(values)
+    console.log(sqlQuery)
+    // db.query(sqlQuery, values)
+    //   .then((data) => {
+    //     res.redirect("/users/favorite/");
+    //   })
+    //   .catch((err) => {
+    //     res.status(500).json({ err: err.message });
+    //   });
+  });
+
   //Filtering properties by price
   router.post("/filter", (req, res) => {
     let sqlQuery = `SELECT properties.id, properties.title as properties_title, properties.price AS properties_price, properties.description as description, properties.photo_1 as properties_photo FROM properties_types JOIN properties ON properties.type_id = properties_types.id`;
@@ -121,7 +126,7 @@ module.exports = (db) => {
       });
   });
 
-  //creating a new message for the properties
+  //Creating a new message for the properties
   router.post("/properties/:properties_id/message", (req, res) => {
     const sqlQuery = `INSERT INTO messages (user_id, content, properties_id) VALUES ($1, $2, $3);`;
     const userId = req.session.user_id;
@@ -137,35 +142,5 @@ module.exports = (db) => {
       });
   });
 
-  //Rendering the messages page
-    router.get("/messages", (req, res) => {
-      let values = [];
-      const userId = req.session.user_id;
-      let sqlQuery = ``;
-      // if (userId == 1) {
-      //   sqlQuery = `SELECT * FROM messages WHERE is_for_admin = $1 ORDER BY messages.id DESC;`;
-      //   values = [true];
-      // } else {
-        sqlQuery = `SELECT is_for_admin, content, properties.id AS properties_id, properties.seller_id, properties.title, properties.price AS price, user_id, users.name AS user_name
-        FROM messages
-        JOIN properties ON properties.id = messages.properties_id
-        JOIN users ON users.id = messages.user_id
-        WHERE user_id = $1 OR properties.seller_id = $2
-        ORDER BY messages.id;`;
-        values = [userId, userId];
-      // };
-      const user_email = req.session.user_email;
-      db.query(sqlQuery, values)
-      .then((data) => {
-          const messages = data.rows;
-          const user_id = req.session.user_id;
-          const isAdmin = req.session.isAdmin;
-          const templateVars = { user_email, userId, messages, user_id, isAdmin };
-          res.render("messages", templateVars);
-        })
-        .catch((err) => {
-          res.status(500).json({ err: err.message });
-        });
-    });
   return router;
 };

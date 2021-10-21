@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/login.css" type="text/css" />
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/content.css" type="text/css" />
   <link rel="stylesheet" href="/styles/details.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -26,30 +25,28 @@
   <!-- Add icon link -->
   <link rel="shortcut icon" href="https://img.icons8.com/office/16/000000/key.png" type="image/x-icon">
 </head>
-
   <body>
     <!-- Header section -->
     <%- include('partials/_header') %>
-    <!-- display section -->
-
-    <div class="listings-container">
-      <h4 class="featured"><span>Listing</span> Details</h4>
-      <div class="listings">
-          <div class="listing">
-               <%= product.name %>
-            <img src='/images/image1.png' alt=“”>
-            <figcaption><strong>House Cost:&nbsp; $370000 </strong></figcaption>
-
-            <div>
-              <%= product.price %>
-              <%= product.description %>
-            </div>
+    <!-- Details section -->
+    <main>
+      <div class="listings-container">
+        <h4 class="featured"><span>Listing</span> Details</h4>
+        <div class="listing">
+          <%= property.title %>
+          <img src='<%= property.photo_1 %> ' alt=“”>
+          <div class="property-info">
+            <div class="price">$<%= property.price %></div>
+            <div class="description"><%= property.description %></div>
           </div>
+          <form class="form-inline" action="/favorites/<%= favorites.properties_id %>" method="POST">
+            <a href=""><i class="far fa-heart"></i></a>
+          </form>
         </div>
       </div>
     </main>
- <!-- Footer section -->
- <%- include('partials/_footer') %>
+    <!-- Footer section -->
+    <%- include('partials/_footer') %>
   </body>
 
 </html>

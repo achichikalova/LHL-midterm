@@ -104,14 +104,20 @@ app.get('/about', (req, res) => {
   res.render('about', templateVars);
 });
 
-app.get("/views/details/:id", (req, res) => {
-  console.log(req.params.id)
-  db.query("SELECT * FROM properties WHERE id = $1",[req.params.id]) .then (result => {
-    console.log(result.rows)
-    res.render('details',{product:result.rows[0], user_id: null})
+app.get("/details/:id", (req, res) => {
+  const user_id = req.session.user_id;
+  const email = req.session.user_email;
+  const isAdmin = req.session.isAdmin;
+  db.query(`SELECT * FROM properties
+            JOIN favorite_properties ON favorite_properties.properties_id = properties.id
+            WHERE properties.id = $1`,[req.params.id])
+  .then (result => {
+    const favorites = result.fields[11];
+    const property = result.rows[0];
+    const templateVars = { user_id, email, isAdmin, property, favorites };
+    res.render('details', templateVars)
   })
-
-})
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
