@@ -119,19 +119,14 @@ app.post('/logout', function(req, res) {
   res.redirect('/');
 });
 
-app.get("/views/details/:id", (req, res) => {
-  console.log(req.params.id)
-  db.query("SELECT * FROM properties WHERE id = $1",[req.params.id]) .then (result => {
-    console.log(result.rows)
-    res.render('details',{product:result.rows[0], user_id: null})
-  });
-})
+// app.get("/views/details/:id", (req, res) => {
+//   console.log(req.params.id)
+//   db.query("SELECT * FROM properties WHERE id = $1",[req.params.id]) .then (result => {
+//     console.log(result.rows)
+//     res.render('details',{product:result.rows[0], user_id: null})
+//   });
+// })
 
-// app.get("/", (req, res) => {
-//   console.log("log1",req.body);
-//   let templateVars = {photo:req.body.photo_1};
-//   res.render('_content.ejs');
-// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

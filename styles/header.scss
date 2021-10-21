@@ -36,10 +36,10 @@ header {
       margin: 0;
       font-size: 2.2rem;
       filter: drop-shadow(0 0 2rem $body-color);
-    }
 
-    span {
-      color: $accent-color;
+      span {
+        color: $accent-color;
+      }
     }
 
     p {
@@ -47,7 +47,6 @@ header {
       margin: 0;
       font-size: 1rem;
     }
-
   }
 
   .contacts {
@@ -96,16 +95,17 @@ header {
     font-size: 1.3rem;
 
     .link {
-      color: #ffffff;
+      color: $body-color;
       font-size: 20px;
       text-decoration: none;
       padding: 10px;
       margin: 0 10px;
     }
+
     .link:hover {
-      border-top: 2px solid #ffffff;
-      border-bottom: 2px solid #ffffff;
-      transition: .3s;
+      border-top: 2px solid $accent-color;
+      border-bottom: 2px solid $accent-color;;
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
   }
 
@@ -115,11 +115,11 @@ header {
 
     a {
       cursor: pointer;
-      transition: .3s;
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       color: $font-color;
 
       &:hover {
-        color: #000;
+        color: $accent-color;
       }
     }
   }
