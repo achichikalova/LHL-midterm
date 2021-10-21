@@ -38,7 +38,14 @@
             <div class="property-content">
               <h2><%= favorite.title %></h1>
               <div>Price: $<%= favorite.price %> </div>
-              <button type="button" class="btn btn-outline-dark">More info</button>
+              <div class="btn-container">
+                <form class="form-inline" action="/" method="GET">
+                  <button type="button" class="btn btn-outline-dark">More info</button>
+                </form>
+                <form class="form-inline" action="/" method="POST">
+                  <a href=""><i class="fas fa-heart-broken"></i></a>
+                </form>
+              </div>
             </div>
           </div>
           <% } %>
