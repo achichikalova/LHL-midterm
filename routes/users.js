@@ -58,7 +58,6 @@ module.exports = (db) => {
         res.status(500).json({ err: err.message });
       });
     });
-    //new feauture:
     //Removing favourite product from user
     router.post("/favourite/:favorite_product_id/delete", (req, res) => {
       const sqlQuery = `DELETE FROM favorite_products WHERE id = $1;`;
