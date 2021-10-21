@@ -22,7 +22,7 @@ module.exports = (db) => {
       });
   });
 
-  //Inserting products into favorites list if user clicks on favorite this
+  //Inserting properties into favorites list if user clicks on favorite this
   router.post("/favorites/:properties_id", (req, res) => {
     const propertyId = req.params.properties_id;
     const userId = 1;
@@ -59,10 +59,10 @@ module.exports = (db) => {
       });
     });
 
-    //Removing favourite product from user
-    router.post("/favourite/:favorite_product_id/delete", (req, res) => {
-      const sqlQuery = `DELETE FROM favorite_products WHERE id = $1;`;
-      const values = [req.params.favorite_product_id];
+    //Removing favourite properties from user
+    router.post("/favourite/:favorite_properties_id/delete", (req, res) => {
+      const sqlQuery = `DELETE FROM favorite_properties WHERE id = $1;`;
+      const values = [req.params.favorite_properties_id];
       db.query(sqlQuery, values)
         .then((data) => {
           res.redirect("/users/favourite/");
@@ -137,6 +137,7 @@ module.exports = (db) => {
       });
   });
 
+
   //Rendering the messages page
     router.get("/messages", (req, res) => {
       let values = [];
@@ -167,5 +168,25 @@ module.exports = (db) => {
           res.status(500).json({ err: err.message });
         });
     });
+     //Replying messages
+  router.post("/properties/reply", (req, res) => {
+    const sqlQuery = `INSERT INTO messages (user_id, content, properties_id, is_for_admin) VALUES ($1, $2, $3, $4);`;
+    const userId = req.session.user_id;
+    const message = req.body.name;
+    let isAdmin = false;
+    const propertiesId = req.body.contactId;
+    if (propertiesId === "1") {
+      isAdmin = true;
+    }
+    const values = [userId, message, propertiesId, isAdmin];
+    db.query(sqlQuery, values)
+      .then((data) => {
+        res.redirect("/users/messages");
+      })
+      .catch((err) => {
+        res.status(500).json({ err: err.message });
+      });
+  });
+
   return router;
 };
