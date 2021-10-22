@@ -43,6 +43,8 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const dbRoutes = require("./routes/database");
 const contentRoute = require("./routes/content");
+const listingsRoute = require("./routes/listings");
+const detailsRoute = require("./routes/details");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -56,9 +58,8 @@ app.use("/add-property", dbRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.use("/",contentRoute(db));
-
-
-
+app.use("/listings",listingsRoute(db));
+app.use("/details",detailsRoute(db));
 
 app.get("/login", (req, res) => {
   res.render('login', { user_id: null, error_message: null, isAdmin: null });
