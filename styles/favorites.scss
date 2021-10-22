@@ -38,7 +38,7 @@ $grey-font-color:#a0a0a0;
       position: relative;
       transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
       border: 2px solid $grey-font-color;
-      border-radius: 16px;
+      border-radius: 15px;
       overflow: hidden;
       margin-left: 2em;
 
@@ -64,6 +64,29 @@ $grey-font-color:#a0a0a0;
       position: absolute;
       bottom: 0;
       padding: 1em;
+
+      .btn-container {
+        display: flex;
+        flex-direction: row;
+
+        form {
+          margin-left: 1em;
+
+          .icon {
+            border: none;
+            background: none;
+          }
+
+          i {
+            font-size: 2em;
+            color: $grey-font-color;
+
+            &:hover {
+              color: $accent-color;
+            }
+          }
+        }
+      }
     }
   }
 
