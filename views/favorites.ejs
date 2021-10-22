@@ -32,7 +32,7 @@
     <section class="favorites-container">
       <h1><span>Your</span> Favorites</h1>
       <div class="property-container">
-        <% for (let favorite of favorites) {%>
+        <% for (let favorite of favorites) { %>
           <div class="property-card">
             <img src="<%= favorite.photo_1 %>" alt="<%= favorite.title %>">
             <div class="property-content">
@@ -42,8 +42,8 @@
                 <form class="form-inline" action="/details/<%= favorite.properties_id %>" method="GET">
                   <button type="submit" class="btn btn-outline-dark">More info</button>
                 </form>
-                <form class="form-inline" action="/favorites/<%= favorite.properties_id %>/delete" method="POST">
-                  <a href=""><i class="fas fa-heart-broken"></i></a>
+                <form class="form-inline" action="/users/favorites/delete/<%= favorite.properties_id %>" method="POST">
+                  <button type="submit" href=""><i class="fas fa-heart-broken"></i></button>
                 </form>
               </div>
             </div>

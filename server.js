@@ -113,6 +113,7 @@ app.get("/details/:id", (req, res) => {
             WHERE properties.id = $1`,[req.params.id])
   .then (result => {
     const favorites = result.fields[11];
+    console.log(favorites)
     const property = result.rows[0];
     const templateVars = { user_id, email, isAdmin, property, favorites };
     res.render('details', templateVars)

@@ -34,13 +34,13 @@
         <h4 class="featured"><span>Listing</span> Details</h4>
         <div class="listing">
           <%= property.title %>
-          <img src='<%= property.photo_1 %> ' alt=“”>
+          <img src='<%= property.photo_1 %>' alt=“”>
           <div class="property-info">
             <div class="price">$<%= property.price %></div>
             <div class="description"><%= property.description %></div>
           </div>
-          <form class="form-inline" action="/favorites/<%= favorites.properties_id %>" method="POST">
-            <a href=""><i class="far fa-heart"></i></a>
+          <form class="form-inline" action="/users/favorites/<%= property.id %>" method="POST">
+            <button type="submit" href=""><i class="far fa-heart"></i></button>
           </form>
         </div>
       </div>
