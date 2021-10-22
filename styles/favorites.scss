@@ -72,6 +72,11 @@ $grey-font-color:#a0a0a0;
         form {
           margin-left: 1em;
 
+          .icon {
+            border: none;
+            background: none;
+          }
+
           i {
             font-size: 2em;
             color: $grey-font-color;

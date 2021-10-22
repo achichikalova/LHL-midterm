@@ -98,6 +98,31 @@ module.exports = (db) => {
       });
   });
 
+  //Rendering messages page
+  router.get("/messages", (req, res) => {
+    const user_email = req.session.user_email;
+    const user_id = req.session.user_id;
+    const propertiesId = req.params.properties_id;
+    console.log(user_id)
+    const isAdmin = req.session.isAdmin;
+    const sqlQuery = `SELECT * FROM properties
+                      JOIN messages ON messages.properties_id = properties.id
+                      JOIN users ON users.id = properties.seller_id
+                      WHERE properties.id = $1;`;
+    const values = [user_id];
+    if (user_id) {
+      db.query(sqlQuery, values)
+        .then((data) => {
+          const messages = data.rows;
+          const templateVars = { user_email, user_id, messages, isAdmin, propertiesId };
+          res.render("messages", templateVars);
+        })
+        .catch((err) => {
+          res.status(500).json({ err: err.message });
+        });
+    }
+  })
+
   //Rendering the new message page
   router.get("/properties/:properties_id/message", (req, res) => {
     const user_email = req.session.user_email;

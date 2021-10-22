@@ -33,16 +33,20 @@
     <main class="messages">
       <h1><span>Your</span> Messages</h1>
       <% for (let message of messages) { %>
+        <% if (!message) { %>
+          You have no messages yet.
+        <% } else { %>
         <div class="message-container">
           <div class="message-details">
-            <div class="name user-<%= message.user_id %> "><%= message.user_name %></div>
+            <div class="name user-<%= message.user_id %> "><%= message.name %></div>
             <div class="property">About: <%= message.title %></div>
           </div>
           <div class="message-content"><%= message.content %></div>
         </div>
         <% } %>
+      <% } %>
         <div class="reply-button">
-          <a type="submit" class="nav-item nav-link" href="/">Reply <i class="fas fa-feather-alt"></i></a>
+          <a type="submit" class="nav-item nav-link" href="/properties/<%= propertiesId %> /message">Reply <i class="fas fa-feather-alt"></i></a>
         </div>
     </main>
     <!-- Footer section -->

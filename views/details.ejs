@@ -31,17 +31,17 @@
     <!-- Details section -->
     <main>
       <div class="listings-container">
-        <h4 class="featured"><span>Listing</span> Details</h4>
+        <h1><span>Listing</span> Details</h1>
         <div class="listing">
-          <%= property.title %>
           <img src='<%= property.photo_1 %>' alt=“”>
-          <div class="property-info">
+          <div class="listing-content">
+            <div class="title"><%= property.title %></div>
             <div class="price">$<%= property.price %></div>
             <div class="description"><%= property.description %></div>
+            <form action="/users/favorites/<%= property.id %>" method="POST">
+              <button class="icon" type="submit" href=""><i class="fas fa-heart"></i></button>
+            </form>
           </div>
-          <form class="form-inline" action="/users/favorites/<%= property.id %>" method="POST">
-            <button type="submit" href=""><i class="far fa-heart"></i></button>
-          </form>
         </div>
       </div>
     </main>

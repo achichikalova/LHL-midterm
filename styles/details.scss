@@ -1,35 +1,102 @@
+/*****Colors*****/
+$primary-color:#272727;
+$accent-color: #e2a616;
+$body-color: #f7f7f7;
+$font-color: #d8d8d8;
+$grey-font-color:#a0a0a0;
+
 .listings-container{
-  width:100%;
-  height:100%;
+  padding-top: 2em;
   position: relative;
-  flex-direction: row;
-}
-
-.featured {
-	text-transform:uppercase;
-  margin-left:10px;
-
-  span {
-    color: #e2a616;
-  }
-}
-
-
-.listings{
-
-  margin-right: 20px;
   display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  min-height: 80vh;
+  font-size: 20px;
 
+  h1 {
+    text-transform: uppercase;
+    margin: 1em;
+
+    span {
+      color: $accent-color;
+    }
+  }
+
+  .listing {
+    position: relative;
+    padding: 3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 60vw;
+    height: 40vh;
+    background-color: $grey-font-color;
+    border-radius: 15px;
+
+    img {
+      width: 20em;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .listing-content {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+
+      .title {
+        font-size: 3em;
+        color: $accent-color;
+        font-weight: bold;
+      }
+
+      .price {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: $primary-color;
+      }
+
+      .description {
+        font-size: 1.4em;
+        font-style: italic;
+
+      }
+    }
+
+    form {
+
+      .icon {
+        border: none;
+        background: none;
+      }
+
+      i {
+        font-size: 2em;
+        color: $font-color;
+        margin: 1em;
+
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+
+  }
+
+}
 
 .listing{
   width: 50%;
   vertical-align: top;
   margin-bottom: 11px;
   padding: 10px 40px 100px;
+
+
+
 
 }
 
