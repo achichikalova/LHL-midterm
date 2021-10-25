@@ -42,3 +42,11 @@ The following steps are only for _one_ of the group members to perform.
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+
+## ScreenShots 
+### Main Page
+![Main Page](./public/images/main_page.png)
+### About Page
+![About Page](./public/images/about_page.png)
+### Login Page
+![Login Page](./public/images/login_page.png)
