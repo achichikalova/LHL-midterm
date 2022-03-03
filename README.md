@@ -1,3 +1,9 @@
+# Description
+
+Full Stack application for real estate agency use. Built with EXJ for the front end, Express.js for the back end, and PostgreSQL for the database.
+Agent-user can register, login/logout, publish real estate ads, get messages from users. 
+Users can register, login/logout, send messages to the agent, make favorite ads, search for a specific city, type of real estate and etc.
+
 ## Project Setup
 
 The following steps are only for _one_ of the group members to perform.
